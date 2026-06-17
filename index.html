@@ -25,29 +25,31 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <p class="hero-sub">Welcome to my creative space</p>
-                <h1 class="hero-title">CREATIVE<br>PORTFOLIO</h1>
-                <div class="scroll-down"><span></span>SCROLL</div>
-            </div>
+    <p class="hero-sub">Welcome to my creative space</p>
+    <h1 class="hero-title">CREATIVE<br><span>PORTFOLIO</span></h1>
+</div>
         </section>
 
         <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">ABOUT</h2>
-                <div class="about-wrapper">
-                    <div class="about-img">
-                        <div class="image-placeholder"></div>
-                    </div>
-                    <div class="about-text">
-                        <h3>Riyu Okada</h3>
-                        <p class="subtitle">Creator / Developer</p>
-                        <p class="description">
-                            パッと見た瞬間に心が動くような、世界観のあるデザインにこだわって制作をしています。 限って綺麗なだけでなく、そのサイトが持つ空気感や魅力を視覚で最大限に表現することが得意です。
-                        </p>
-                    </div>
+    <div class="container">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="about-wrapper">
+            
+            <div class="about-img">
+                <div class="blob-shape">
+                    <img src="image/about.JPG" alt="Riyu Okadaの写真" class="embedded-image">
                 </div>
             </div>
-        </section>
+            <div class="about-text">
+                <h3>Riyu Okada</h3>
+                <p class="subtitle">Creator / Developer</p>
+                <p class="description">
+                    パッと見た瞬間に心が動くような、世界観のあるデザインにこだわって制作をしています。単に綺麗なだけでなく、そのサイトが持つ空気感や魅力を視覚で最大限に表現することが得意です。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section id="skill" class="section-alt">
     <div class="container">
@@ -102,7 +104,7 @@
     　　　　　　　　　　　　　　<img src="image/mosyasaito.png" alt="作品01の画像" height="250" style="width: 100%; object-fit: cover; display: block;">
     
     　　　　　　　　　　　　　　　<div class="works-info">
-       　　　　　　　　　　　　　　 <h3>模写サイト</h3>
+       　　　　　　　　　　　　　　 <h3>採用サイト</h3>
        　　　　　　　　　　　　　　　 <p>とある会社の模写サイト</p>
     　　　　　　　　　　　　　　　</div>
 　　　　　　　　　　　　　　　</a>
@@ -129,6 +131,22 @@
     <footer>
         <p>&copy; 2026 Your Name. All Rights Reserved.</p>
     </footer>
+<script>
+        const hero = document.querySelector('.hero');
 
+        window.addEventListener('mousemove', (e) => {
+            // マウスの座標を取得
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            // 画面の中心からの距離を計算
+            const moveX = (mouseX - window.innerWidth / 2) / 25;
+            const moveY = (mouseY - window.innerHeight / 2) / 25;
+
+            // CSSのカスタムプロパティ（変数）として座標を渡す
+            hero.style.setProperty('--x', `${moveX}px`);
+            hero.style.setProperty('--y', `${moveY}px`);
+        });
+    </script>
 </body>
 </html>
