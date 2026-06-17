@@ -110,6 +110,9 @@ header nav ul a:hover {
 /* ==========================================
    メインビジュアル (Hero) 
    ========================================== */
+/* ==========================================
+   メインビジュアル (Hero) - 限界突破インパクト版
+   ========================================== */
 .hero {
     height: 100vh;
     display: flex;
@@ -118,91 +121,112 @@ header nav ul a:hover {
     text-align: center;
     position: relative;
     overflow: hidden;
-    background-color: #0b0f19;
+    background-color: #05070f; /* より深い漆黒にして光を際立たせる */
+    
+    /* 💡 空間の広がりを演出する奥側のネオンフォグ */
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.18) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+    
+    /* 💡 大袈裟な仕掛け：画面全体にサイバー感を出す微細なグリッド（網目）を敷く */
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.12) 0%, transparent 60%);
 }
 
+/* 💡 超大袈裟要素①：中央の文字を飲み込む「巨大な3D光背リング」 */
 .hero::before {
     content: '';
     position: absolute;
-    width: 450px;
-    height: 450px;
-    bottom: -10%;
-    left: -10%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    border-radius: 43% 57% 38% 62% / 55% 42% 58% 45%;
+    width: 700px;  /* 圧倒的サイズ */
+    height: 700px;
+    top: 50%;
+    left: 50%;
+    /* 💡 最初から画面中央に固定し、立体的に傾ける */
+    transform: translate(-50%, -50%) rotateX(60deg) rotateY(15deg);
+    border: 4px dashed rgba(139, 92, 246, 0.4); /* 輪郭を点線にしてデジタル感を加速 */
+    border-radius: 50%;
+    /* 強烈なネオングロー（発光） */
+    box-shadow: 
+        0 0 60px rgba(139, 92, 246, 0.3),
+        inset 0 0 60px rgba(59, 130, 246, 0.2);
     z-index: 1;
-    animation: floatBlob 16s infinite alternate ease-in-out;
+    /* 💡 3D回転アニメーションをかける */
+    animation: cosmicRotate 25s infinite linear;
+    pointer-events: none;
 }
 
+/* 💡 超大袈裟要素②：左下からせり出す「超巨大な半透明の惑星アーク（円弧）」 */
 .hero::after {
     content: '';
     position: absolute;
-    width: 320px;
-    height: 320px;
-    top: -5%;
-    right: -5%;
-    border: 1.5px solid rgba(168, 85, 247, 0.25);
+    width: 900px;
+    height: 900px;
+    bottom: -30%;
+    left: -20%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.03), transparent 70%);
     border-radius: 50%;
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.1);
     z-index: 1;
-    animation: floatCircle 12s infinite alternate-reverse ease-in-out;
+    animation: pulseOrbit 12s infinite alternate ease-in-out;
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
+    /* 💡 文字自体にもほんのりネオンの影をつけて存在感をアップ */
+    filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.3));
 }
 
 .hero-sub {
     font-size: 0.85rem;
-    letter-spacing: 10px; 
-    color: #818cf8; 
-    margin-bottom: 20px;
+    letter-spacing: 12px; /* さらにハイエンドに */
+    color: #a5b4fc;
+    margin-bottom: 25px;
     text-transform: uppercase;
     font-weight: 700;
 }
 
 .hero-title {
-    font-size: 5.5rem; 
-    font-weight: 800; 
-    line-height: 1.1;
-    letter-spacing: 6px;
+    font-size: 5.8rem; /* さらにインパクトを持たせるサイズアップ */
+    font-weight: 900; /* 限界まで極太に */
+    line-height: 1.05;
+    letter-spacing: 8px;
     color: #fff;
-    background: linear-gradient(to bottom, #ffffff 40%, #94a3b8 100%);
+    background: linear-gradient(to bottom, #ffffff 50%, #94a3b8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero-title span {
-    font-weight: 300;
-    letter-spacing: 12px;
-    background: linear-gradient(to bottom, #ffffff 20%, #cbd5e1 100%);
+    font-weight: 200; /* 逆に極細にしてギャップを最大化 */
+    letter-spacing: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.3) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/* スクロールダウンの最下部固定（被り対策完全版） */
 .scroll-down {
     position: absolute;
-    bottom: 25px; 
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.75rem;
     letter-spacing: 4px;
-    color: #64748b;
+    color: #475569;
     z-index: 3;
 }
 
 .scroll-down span {
     display: block;
     width: 1px;
-    height: 40px; 
-    background-color: rgba(255, 255, 255, 0.08);
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.05);
     margin: 8px auto 0;
     position: relative;
     overflow: hidden;
@@ -215,21 +239,28 @@ header nav ul a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, #6366f1, transparent);
+    background: linear-gradient(to bottom, transparent, #8b5cf6, transparent);
     animation: scroll-anim 2s infinite ease-in-out;
 }
 
 /* ==========================================
-   アニメーション
+   アニメーション（大袈裟＆ダイナミック）
    ========================================== */
-@keyframes floatBlob {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    100% { transform: translate(40px, -20px) rotate(15deg) scale(1.05); }
+   
+/* 💡 巨大リングが宇宙のように立体回転するアニメーション */
+@keyframes cosmicRotate {
+    0% {
+        transform: translate(-50%, -50%) rotateX(60deg) rotateY(15deg) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateX(60deg) rotateY(15deg) rotateZ(360deg);
+    }
 }
 
-@keyframes floatCircle {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(-30px, 30px) scale(0.95); }
+/* 💡 巨大アークがゆっくりと脈動する */
+@keyframes pulseOrbit {
+    0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+    100% { transform: scale(1.05) translate(20px, -10px); opacity: 1; }
 }
 
 @keyframes scroll-anim {
@@ -450,4 +481,154 @@ footer {
     object-fit: cover; /* 💡 写真が縦横に歪まず、枠いっぱいに綺麗に収まります */
     display: block;
     mix-blend-mode: normal; /* 写真の元の色をそのまま出す設定 */
+}
+
+/* ==========================================
+   作品カード内のリンクボタン（追加）
+   ========================================== */
+.works-links {
+    display: flex;
+    gap: 12px;         /* ボタンとボタンの間のすき間 */
+    margin-top: 15px;  /* 説明文からの上の余白 */
+}
+
+/* 両方のボタンの共通スタイル */
+.works-links a {
+    flex: 1;           /* ボタンの横幅を均等に分ける */
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-site {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.btn-site:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+    opacity: 0.9;
+}
+
+.btn-git {
+    background-color: transparent;
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-git:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: #fff;
+    color: #fff;
+    transform: translateY(-2px);
+}
+/* 💡 画像が中途半端に切れないようにバランスを再調整 */
+.works-img {
+    width: 100%;
+    height: 190px;     /* 💡 高さを 160px から 190px に広げて縦の窮屈感をなくします */
+    object-fit: cover; 
+    object-position: top center; /* 採用サイトの一番上を基準に綺麗に見せる */
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+/* ==========================================
+   ハンバーガーメニュー・スマホ対応（追加）
+   ========================================== */
+
+/* PCではハンバーガーボタンを隠す */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 100; /* メニューより前に出す */
+    width: 30px;
+    height: 24px;
+}
+
+/* 三本線のデザイン */
+.hamburger-btn span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff; /* 白い線 */
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-btn span:nth-child(1) { top: 0; }
+.hamburger-btn span:nth-child(2) { top: 11px; }
+.hamburger-btn span:nth-child(3) { top: 22px; }
+
+/* 💡 タップされてメニューが開いたとき、三本線を「×」に変えるマジック */
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+    background-color: #8b5cf6; /* アクセントに紫 */
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0; /* 真ん中の線を消す */
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+    background-color: #8b5cf6;
+}
+
+/* ==========================================
+   📱 スマホ画面（横幅768px以下）の時のスタイル
+   ========================================== */
+@media (max-width: 768px) {
+    /* ヘッダーの中身を横並びに整える */
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hamburger-btn {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(11, 15, 25, 0.98); /* 背景と同じ漆黒（少し透けさせる） */
+        backdrop-filter: blur(10px); /* すりガラス効果 */
+        z-index: 99;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px; /* メニュー同士の間隔 */
+        padding: 0;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1.5rem; 
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #fff;
+        text-decoration: none;
+    }
 }

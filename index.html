@@ -12,15 +12,24 @@
 <body>
 
     <header>
-        <div class="logo">PORTFOLIO</div>
-        <nav>
+    <div class="container header-container">
+        <a href="#" class="logo">PORTFOLIO</a>
+
+        <nav class="nav-menu">
             <ul>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#skill">SKILL</a></li>
                 <li><a href="#works">WORKS</a></li>
             </ul>
         </nav>
-    </header>
+
+        <button class="hamburger-btn" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
 
     <main>
         <section class="hero">
@@ -100,15 +109,18 @@
                 <h2 class="section-title">WORKS</h2>
                 <div class="works-grid">
                     <div class="works-card">
-                        <a href="file:///Users/okadariyu/mosyakadai2/index.html">
-    　　　　　　　　　　　　　　<img src="image/mosyasaito.png" alt="作品01の画像" height="250" style="width: 100%; object-fit: cover; display: block;">
+    <img src="image/mosyasaito.png" alt="採用サイトの画像" class="works-img">
     
-    　　　　　　　　　　　　　　　<div class="works-info">
-       　　　　　　　　　　　　　　 <h3>採用サイト</h3>
-       　　　　　　　　　　　　　　　 <p>とある会社の模写サイト</p>
-    　　　　　　　　　　　　　　　</div>
-　　　　　　　　　　　　　　　</a>
-                    </div>
+    <div class="works-info">
+        <h3>採用サイト</h3>
+        <p>とある会社の模写サイト</p>
+        
+        <div class="works-links">
+            <a href="file:///Users/okadariyu/mosyakadai2/index.html" class="btn-site">View Site</a>
+            <a href="https://github.com/Gangtianlimeng6-CPU/Portforio" target="_blank" class="btn-git">GitHub</a>
+        </div>
+    </div>
+</div>
                     <div class="works-card">
                         <div class="works-img-placeholder"><span>WORK 02</span></div>
                         <div class="works-info">
@@ -131,22 +143,35 @@
     <footer>
         <p>&copy; 2026 Your Name. All Rights Reserved.</p>
     </footer>
-<script>
+    <script>
         const hero = document.querySelector('.hero');
+        if(hero) {
+            window.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                const moveX = (mouseX - window.innerWidth / 2) / 25;
+                const moveY = (mouseY - window.innerHeight / 2) / 25;
+                hero.style.setProperty('--x', `${moveX}px`);
+                hero.style.setProperty('--y', `${moveY}px`);
+            });
+        }
 
-        window.addEventListener('mousemove', (e) => {
-            // マウスの座標を取得
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
+        const hamburgerBtn = document.querySelector('.hamburger-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
 
-            // 画面の中心からの距離を計算
-            const moveX = (mouseX - window.innerWidth / 2) / 25;
-            const moveY = (mouseY - window.innerHeight / 2) / 25;
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-            // CSSのカスタムプロパティ（変数）として座標を渡す
-            hero.style.setProperty('--x', `${moveX}px`);
-            hero.style.setProperty('--y', `${moveY}px`);
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
         });
     </script>
+
 </body>
 </html>
